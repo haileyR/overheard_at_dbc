@@ -1,3 +1,4 @@
 get '/' do
-  erb :index
+  @posts = Post.all
+  erb :'index', locals: {posts: @posts}
 end
