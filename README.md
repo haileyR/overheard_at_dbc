@@ -1,4 +1,4 @@
-foodnews
+Overheard at DBC
 ========
 
-share what you are eating or what you are craving for ;)
+share funny quotes about anything... ha!
