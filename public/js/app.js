@@ -12,4 +12,18 @@ $(document).ready(function(){
       $target.closest('#container').replaceWith(response);
     });
   });
+
+
+  $('.votethumb').on('click', function (event) {
+    event.preventDefault();
+    $target = $(event.target);
+    console.log($target);
+    // $.ajax({
+    //   url: $target.attr('action'),
+    //   type: 'POST',
+    //   data: $target.serialize()
+    // }).done(function (response) {
+    //   $target.closest('#container').replaceWith(response);
+    // });
+  });
 });
