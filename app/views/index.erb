@@ -1,21 +1,14 @@
 <div id="container">
 
-
   <table class="post_list">
     <% posts.order('created_at DESC').each_with_index do |post, index| %>
       <tr>
         <td>
           <a href="/posts/vote"><div class="votethumb" title="upvote"></div></a>
         </td>
-
-
         <td>
           <a href="/posts/<%= post.id %>"><%= post.who %> says... <%= post.quote[0..100] %>...</a>
         </td>
-
-
-
-
       </tr>
     <% end %>
 

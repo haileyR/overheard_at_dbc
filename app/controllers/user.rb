@@ -26,7 +26,7 @@ post '/register' do
     redirect '/'
   else
     # display errors to user
-    redirect '/signup'
+    redirect '/register'
   end
 end
 

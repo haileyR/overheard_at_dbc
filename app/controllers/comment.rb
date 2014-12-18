@@ -11,7 +11,8 @@ end
 
 post '/comments' do
   # create a new comment
-  comment = Comment.create(content: params[:comment], post_id: params[:post_id])
+
+  comment = Comment.create(content: params[:comment], post_id: params[:post_id], user_id: session[:user_id])
   post = Post.find(params[:post_id])
   if request.xhr?
     erb :'posts/single', locals: {comment: comment, post: post}, layout: false

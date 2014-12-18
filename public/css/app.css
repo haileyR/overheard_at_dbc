@@ -60,17 +60,30 @@ header{
   font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
 }
 
+
+
+input, textarea {
+
+  line-height: 1em;
+  font-size: 1.3em;
+  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
+}
+
+
 .post {
-  margin: 20px 0 10px 0;
+  margin: 20px 0 50px 0;
   font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
 }
 
 .post_list td{
-  height: 30px;
+  padding: 0;
+  margin: 0;
+  height: 50px;
 }
 
 .post_list td a{
   margin-left: 20px;
+  margin-top: 20px;
   font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
   color: #4682B4;
 }
@@ -79,10 +92,10 @@ header{
 }
 
 .votethumb{
-  margin-top: 10px;
-  width:30px;
+  width: 50px;
   height: 30px;
-  background: url("/images/thumbs-up-icon.png"), no-repeat;
+  background-image: url("/images/thumbs-up-icon.png");
+  background-repeat: no-repeat;
 }
 
 h1{
@@ -96,9 +109,16 @@ h2{
   font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
 }
 
+h3{
+  font-size: 1.3em;
+  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
+}
+
 
 #container{
   width: 70%;
   margin: 20px auto;
-
+}
+form{
+  float: center;
 }
