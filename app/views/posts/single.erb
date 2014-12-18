@@ -1,0 +1,27 @@
+<div id="container">
+  <div class="post">
+    <h2><%= post.who %> says... <%= post.quote %></h2>
+    <!-- <h3>created at <%= post.created_at %>, updated at <%= post.updated_at %></h3> -->
+
+  </div>
+
+
+  <ul class="fol_comments">
+    <% if current_user %>
+      <h2>Comments</h2>
+      <li>
+        <form id="comment_input" action="/comments" method="POST">
+          <textarea type="text" placeholder="be nice..." rows="6" cols="50" name= "comment"></textarea><br>
+          <input type="hidden" name="post_id" value="<%= post.id %>">
+          <button type="submit">Add</button>
+
+        </form>
+      <% end %>
+    <% post.comments.order('created_at DESC').each do |comment| %>
+      <li>
+        <%= erb :'comments/single', locals: {comment: comment} %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>

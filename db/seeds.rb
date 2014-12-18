@@ -4,5 +4,9 @@ require 'faker'
 }
 
 User.all.each do |user|
-  5.times {user.posts.create(title: Faker::Name.title, content: Faker::Lorem.paragraph)}
+  5.times {user.posts.create(who: Faker::Name.first_name, quote: Faker::Lorem.paragraph)}
+end
+
+Post.all.each do |post|
+  rand(3..7).times {post.comments.create(content: Faker::Lorem.paragraph)}
 end

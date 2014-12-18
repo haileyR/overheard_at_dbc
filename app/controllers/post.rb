@@ -1,19 +1,26 @@
+get '/' do
+  @posts = Post.all
+  erb :'index', locals: {posts: @posts}
+end
+
 
 get '/posts/new' do
   # return an HTML form for creating a new post
-  # erb :'posts/new'
+  erb :'posts/new'
 end
 
 post '/posts' do
   # create a new post
-  # @post = Post.create(params[:post])
-  # redirect '/posts'
+  @post = Post.create(params[:post])
+  # p '/posts/#{@post.id}'
+  redirect '/'
 end
 
 get '/posts/:id' do |id|
-  # display a specific post
-  # @post = Post.find id
-  # erb :'posts/single'
+  # if request.xhr?
+
+  post = Post.find id
+  erb :'posts/single', locals: {post: post}
 end
 
 get '/posts/:id/edit' do |id|
@@ -23,10 +30,14 @@ get '/posts/:id/edit' do |id|
 end
 
 put '/posts/:id' do |id|
-  # update a specific post
-  # @post = Post.find id
-  # @post.update(params[:post])
-  redirect 'entries/#{@post.id}'
+  post = Post.find(id)
+  post.update(params[:post])
+
+  # if request.xhr?
+  #   erb :'posts/single', locals: {post: post}, layout: false
+  # else
+  #   redirect ("/")
+  # end
 end
 
 delete '/posts/:id' do |id|

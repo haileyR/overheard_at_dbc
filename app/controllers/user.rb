@@ -1,24 +1,38 @@
-get '/users' do
-  # display a list of all users
-  # @users = User.all
-  # erb :'users/index'
+get '/login' do
+  erb :'auth/login'
 end
 
-get '/users/new' do
-  # return an HTML form for creating a new user
-  # erb :'users/new'
+post '/login' do
+  user = User.find_by(name: params[:user][:name])
+  if user && user.authenticate(params[:user][:password])
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    # set_error("Login failed.")
+    redirect '/login'
+  end
+  redirect '/'
 end
 
-post '/users' do
+get '/register' do
+  erb :'auth/register'
+end
+
+post '/register' do
   # create a new user
-  # @user = User.create(params[:user])
-  # redirect '/users'
+  user = User.new(params[:user])
+  if user.save
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    # display errors to user
+    redirect '/signup'
+  end
 end
 
-get '/users/:id' do |id|
-  # display a specific user
-  # @user = User.find id
-  # erb :'users/single'
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
 end
 
 get '/users/:id/edit' do |id|
