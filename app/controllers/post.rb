@@ -17,10 +17,28 @@ post '/posts' do
 end
 
 get '/posts/:id' do |id|
-  # if request.xhr?
-
   post = Post.find id
   erb :'posts/single', locals: {post: post}
+end
+
+get '/posts/:id/upvote' do |id|
+  postvote = Postvote.find_by(post_id: params[:id])
+  if postvote
+    postvote.update(up_count: (postvote.up_count + 1))
+  else
+    Postvote.create(post_id: params[:id], up_count: 1, down_count: 0)
+  end
+  postvote.up_count
+end
+
+get '/posts/:id/downvote' do |id|
+  postvote = Postvote.find_by(post_id: params[:id])
+  if postvote
+    postvote.update(down_count: (postvote.down_count + 1))
+  else
+    Postvote.create(post_id: params[:id], down_count: 1, up_count: 0)
+  end
+  postvote.down_count
 end
 
 get '/posts/:id/edit' do |id|

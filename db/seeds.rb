@@ -8,5 +8,5 @@ User.all.each do |user|
 end
 
 Post.all.each do |post|
-  rand(3..7).times {post.comments.create(content: Faker::Lorem.paragraph, user_id: rand(1..10))}
+  rand(3..7).times {post.comments.create(content: Faker::Lorem.paragraph, user_id: rand(1..9))}
 end

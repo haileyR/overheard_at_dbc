@@ -4,10 +4,13 @@
     <% posts.order('created_at DESC').each_with_index do |post, index| %>
       <tr>
         <td>
-          <a href="/posts/vote"><div class="votethumb" title="upvote"></div></a>
+          <div title="upvote"><a class="upvote" href="/posts/<%= post.id %>/upvote"></div></a>
         </td>
         <td>
-          <a href="/posts/<%= post.id %>"><%= post.who %> says... <%= post.quote[0..100] %>...</a>
+          <div title="upvote"><a class="downvote" href="/posts/<%= post.id %>/downvote"></div></a>
+        </td>
+        <td>
+          <a href="/posts/<%= post.id %>"><%= post.who %> says... <%= post.quote[0..70] %>...</a>
         </td>
       </tr>
     <% end %>
