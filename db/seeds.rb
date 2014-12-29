@@ -1,5 +1,5 @@
 require 'faker'
-10.times{
+11.times{
   User.create(name: Faker::Name.name, password: "a", password_confirmation: "a", email: Faker::Internet.email)
 }
 

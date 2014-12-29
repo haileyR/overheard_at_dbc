@@ -121,6 +121,12 @@ h3{
   font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
 }
 
+h6{
+  height: 33px;
+  text-align: center;
+  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
+}
+
 
 #container{
   width: 55%;

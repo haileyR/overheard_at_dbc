@@ -1,0 +1,20 @@
+    <table class="post_list">
+      <% posts.each do |post| %>
+        <tr>
+          <td>
+            <div title="upvote"><a class="upvote" href="/posts/<%= post.id %>/upvote"></a></div>
+          </td>
+          <td>
+            <div title="downvote"><a class="downvote" href="/posts/<%= post.id %>/downvote"></a></div>
+          </td>
+          <td>
+            <a href="/posts/<%= post.id %>"><%= post.who %> says... <%= post.quote[0..70] %>...</a>
+          </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+
+
+

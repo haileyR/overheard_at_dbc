@@ -1,6 +1,15 @@
 get '/' do
-  @posts = Post.all
-  erb :'index', locals: {posts: @posts}
+
+  @postvotes = Postvote.all
+  p "params: #{params}"
+  if request.xhr?
+    @posts = Post.order_by('upvote')
+    p @posts
+    erb :'posts/_post_list', locals: {order: 'upvote', posts: @posts, postvotes: @postvotes}, layout: false
+  else
+    @posts = Post.order_by('recent')
+    erb :'index', locals: {posts: @posts}
+  end
 end
 
 
@@ -26,9 +35,9 @@ get '/posts/:id/upvote' do |id|
   if postvote
     postvote.update(up_count: (postvote.up_count + 1))
   else
-    Postvote.create(post_id: params[:id], up_count: 1, down_count: 0)
+    postvote = Postvote.create(post_id: params[:id], up_count: 1, down_count: 0)
   end
-  postvote.up_count
+  "#{postvote.up_count}"
 end
 
 get '/posts/:id/downvote' do |id|
@@ -36,9 +45,9 @@ get '/posts/:id/downvote' do |id|
   if postvote
     postvote.update(down_count: (postvote.down_count + 1))
   else
-    Postvote.create(post_id: params[:id], down_count: 1, up_count: 0)
+    postvote = Postvote.create(post_id: params[:id], down_count: 1, up_count: 0)
   end
-  postvote.down_count
+  "#{postvote.down_count}"
 end
 
 get '/posts/:id/edit' do |id|
