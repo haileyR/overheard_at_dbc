@@ -20,7 +20,6 @@ $(document).ready(function(){
       url: $target.attr('href'),
       type: 'GET'
     }).done(function(response){
-      // debugger
       $target.replaceWith('<h6>'+response+'</h6>')
     });
   });
@@ -36,31 +35,15 @@ $(document).ready(function(){
     });
   });
 
-  $('#sort').on('click', function (event) {
+  $('form').on('click', '#sort', function (event) {
     event.preventDefault();
     $target = $(event.target);
     $.ajax({
       url: $target.attr('action'),
       type: 'GET',
-      data: $('#sort_by').val()
+      data: {order: $('#sort_by option:selected').text()}
     }).done(function(response){
       $('.post_list').replaceWith(response)
     });
   });
 });
-
-
-//'created_at DESC'
-// <% posts.order('created_at DESC').each_with_index do |post, index| %>
-
-
-//'created_at'
-//  <% posts.order('created_at').each_with_index do |post, index| %>
-
-//'up_count'
-// <% postvotes.order('up_count DESC').each do |post_vote| %>
-//   <% post = posts.find(post_vote.post_id) %>
-
-//'down_count'
-// <% postvotes.order('down_count DESC').each do |post_vote| %>
-//   <% post = posts.find(post_vote.post_id) %>

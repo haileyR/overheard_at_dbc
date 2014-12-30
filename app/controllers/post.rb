@@ -1,13 +1,9 @@
 get '/' do
-
-  @postvotes = Postvote.all
-  p "params: #{params}"
   if request.xhr?
-    @posts = Post.order_by('upvote')
-    p @posts
-    erb :'posts/_post_list', locals: {order: 'upvote', posts: @posts, postvotes: @postvotes}, layout: false
+    @posts = Post.order_by(params[:order])
+    erb :'posts/_post_list', locals: {posts: @posts}, layout: false
   else
-    @posts = Post.order_by('recent')
+    @posts = Post.order_by('upvote')
     erb :'index', locals: {posts: @posts}
   end
 end
@@ -69,7 +65,7 @@ end
 
 delete '/posts/:id' do |id|
   # delete a specific post
-  # @post = Post.find id
-  # @post.destroy
-  # redirect '/posts'
+  @post = Post.find id
+  @post.destroy
+  redirect '/posts'
 end

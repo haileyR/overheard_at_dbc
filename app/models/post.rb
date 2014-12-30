@@ -5,12 +5,13 @@ class Post < ActiveRecord::Base
   after_create do
     Postvote.create(post_id: self.id, up_count: 0, down_count: 0)
   end
+  after_destroy do
+    Postvote.find_by(post_id: self.id).destroy
+  end
   scope :ordered_by_postvote_upcount, -> { joins(:postvote).order('postvotes.up_count DESC') }
   scope :ordered_by_postvote_downcount, -> { joins(:postvote).order('postvotes.down_count DESC') }
 
   def self.order_by(order)
-    Post.all.order(order)
-    ["upvote","downvote","recent","old"]
     case order
     when "recent"
       posts = Post.all.order('created_at DESC')
