@@ -154,3 +154,8 @@ select{
   border: 1px solid #B0C4DE;
   background: transparent;
 }
+
+p{
+  margin-top: 15px;
+  margin-left: 20px;
+}

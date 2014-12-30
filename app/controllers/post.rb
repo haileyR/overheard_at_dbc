@@ -17,6 +17,8 @@ end
 post '/posts' do
   # create a new post
   @post = Post.create(params[:post])
+  @post.update(user_id: session[:user_id])
+  @post.save
   # p '/posts/#{@post.id}'
   redirect '/'
 end
@@ -54,7 +56,7 @@ end
 
 put '/posts/:id' do |id|
   post = Post.find(id)
-  post.update(params[:post])
+  post.update(params[:post], user_id: session[:user_id])
 
   # if request.xhr?
   #   erb :'posts/single', locals: {post: post}, layout: false
