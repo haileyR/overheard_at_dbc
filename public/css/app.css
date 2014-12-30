@@ -132,6 +132,25 @@ h6{
   width: 55%;
   margin: 20px auto;
 }
-form{
-  float: center;
+#sort_form{
+  margin: 20px;
+}
+
+button{
+  background: transparent;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  border: 1.5px solid #B0C4DE;
+  -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
+}
+
+select{
+  font-family: "Coming Soon", "Comic Sans MS", "Comic Sans MS", sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  border: 1px solid #B0C4DE;
+  background: transparent;
 }

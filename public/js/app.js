@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
   });
 
-  $('form').on('click', '#sort', function (event) {
+  $('#sort_form').on('click', '#sort', function (event) {
     event.preventDefault();
     $target = $(event.target);
     $.ajax({

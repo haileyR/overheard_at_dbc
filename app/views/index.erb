@@ -1,14 +1,14 @@
 <div id="container">
 
-<form>
-  <h3>sort by
+<form id='sort_form'>
+
   <select id="sort_by">
     <% ["upvote","downvote","recent","old"].each do |by| %>
       <option value="<%= by %>"><%= by %></option>
     <% end %>
   </select>
   <button action="/" id='sort' type="submit">Sort!</button>
-  </h3>
+
 </form>
 
 <div id='posts'>
